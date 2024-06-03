@@ -1,0 +1,344 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Notebook API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/v1/notebooks": {
+            "get": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Просмотр страницы записей, выводится 10 постов, пагинацией",
+                "operationId": "0db0e17f81633f9a79d66622f1a2cab8",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "full_name": {
+                                                        "type": "string",
+                                                        "example": "Иванов Иван Иванович"
+                                                    },
+                                                    "phone_number": {
+                                                        "type": "integer",
+                                                        "example": "89009998877"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "ivanov@gmail.com"
+                                                    },
+                                                    "company": {
+                                                        "type": "string",
+                                                        "example": "google"
+                                                    },
+                                                    "birth_of_day": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2000.01.01"
+                                                    },
+                                                    "src_image": {
+                                                        "type": "string",
+                                                        "example": "imagur.com/image145141"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Добавление новой записи",
+                "operationId": "6613bae7d4f28de26d184c1cafbcef65",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "full_name": {
+                                                "type": "string",
+                                                "example": "Иванов Иван Иванович"
+                                            },
+                                            "phone_number": {
+                                                "type": "integer",
+                                                "example": "89009998877"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "ivanov@gmail.com"
+                                            },
+                                            "company": {
+                                                "type": "string",
+                                                "example": "google"
+                                            },
+                                            "birth_of_day": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2000.01.01"
+                                            },
+                                            "src_image": {
+                                                "type": "string",
+                                                "example": "imagur.com/image145141"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "full_name": {
+                                            "type": "string",
+                                            "example": "Иванов Иван Иванович"
+                                        },
+                                        "phone_number": {
+                                            "type": "integer",
+                                            "example": "89009998877"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "ivanov@gmail.com"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "google"
+                                        },
+                                        "birth_of_day рождения": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2000.01.01"
+                                        },
+                                        "src_image": {
+                                            "type": "string",
+                                            "example": "imagur.com/image145141"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/notebooks/{notebook}": {
+            "get": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Просмотр одной записи",
+                "operationId": "f936958998b081043909b47d2a9dce3d",
+                "parameters": [
+                    {
+                        "name": "notebook",
+                        "in": "path",
+                        "description": "ID записи",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "full_name": {
+                                            "type": "string",
+                                            "example": "Иванов Иван Иванович"
+                                        },
+                                        "phone_number": {
+                                            "type": "integer",
+                                            "example": "89009998877"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "ivanov@gmail.com"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "google"
+                                        },
+                                        "birth_of_day рождения": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2000.01.01"
+                                        },
+                                        "src_image": {
+                                            "type": "string",
+                                            "example": "imagur.com/image145141"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Удаление записи",
+                "operationId": "6f2e6a227080eb421509f3e1c7a60dd0",
+                "parameters": [
+                    {
+                        "name": "notebook",
+                        "in": "path",
+                        "description": "ID записи",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/v1/notebooks/{notebook}": {
+            "patch": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Update одной записи",
+                "operationId": "5422b5c127ded3ee77fd44bb988d36ee",
+                "parameters": [
+                    {
+                        "name": "notebook",
+                        "in": "path",
+                        "description": "ID записи",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "full_name": {
+                                                "type": "string",
+                                                "example": "Сидоров Иван Иванович"
+                                            },
+                                            "phone_number": {
+                                                "type": "integer",
+                                                "example": "89007778822"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "sidorov@gmail.com"
+                                            },
+                                            "company": {
+                                                "type": "string",
+                                                "example": "Amazon"
+                                            },
+                                            "birth_of_day": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "1998.05.10"
+                                            },
+                                            "src_image": {
+                                                "type": "string",
+                                                "example": "imagur.com/image6418641"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "full_name": {
+                                            "type": "string",
+                                            "example": "Сидоров Иван Иванович"
+                                        },
+                                        "phone_number": {
+                                            "type": "integer",
+                                            "example": "89007778822"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "sidorov@gmail.com"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "Amazon"
+                                        },
+                                        "birth_of_day": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "1998.05.10"
+                                        },
+                                        "src_image": {
+                                            "type": "string",
+                                            "example": "imagur.com/image6418641"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
