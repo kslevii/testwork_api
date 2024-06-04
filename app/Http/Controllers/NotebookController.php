@@ -73,76 +73,6 @@ use Illuminate\Http\Response;
  *     ),
  * ),
  *
- * @OA\Get(
- *     path="/api/v1/notebooks/{notebook}",
- *     summary="Просмотр одной записи",
- *     tags={"Notebook"},
- *
- *     @OA\Parameter(
- *         description="ID записи",
- *         in="path",
- *         name="notebook",
- *         required=true,
- *         example=1,
- *     ),
- *
- *     @OA\Response(
- *         response=200,
- *         description="Success",
- *         @OA\JsonContent(
- *             @OA\Property(property="full_name", type="string", example="Иванов Иван Иванович"),
- *             @OA\Property(property="phone_number", type="integer", example="89009998877"),
- *             @OA\Property(property="email", type="string", example="ivanov@gmail.com"),
- *             @OA\Property(property="company", type="string", example="google"),
- *             @OA\Property(property="birth_of_day рождения", type="date", example="2000.01.01"),
- *             @OA\Property(property="src_image", type="string", example="imagur.com/image145141"),
- *         )
- *     )
- * ),
- *
- * @OA\Patch(
- *     path="api/v1/notebooks/{notebook}",
- *     summary="Update одной записи",
- *     tags={"Notebook"},
- *
- *     @OA\Parameter(
- *         description="ID записи",
- *         in="path",
- *         name="notebook",
- *         required=true,
- *         example=1,
- *     ),
- *
- *     @OA\RequestBody(
- *         @OA\JsonContent(
- *             allOf={
- *                 @OA\Schema(
- *                     @OA\Property(property="full_name", type="string", example="Сидоров Иван Иванович"),
- *                     @OA\Property(property="phone_number", type="integer", example="89007778822"),
- *                     @OA\Property(property="email", type="string", example="sidorov@gmail.com"),
- *                     @OA\Property(property="company", type="string", example="Amazon"),
- *                     @OA\Property(property="birth_of_day", type="date", example="1998.05.10"),
- *                     @OA\Property(property="src_image", type="string", example="imagur.com/image6418641"),
- *                 )
- *             }
- *         )
- *     ),
- *
- *     @OA\Response(
- *         response=200,
- *         description="Success",
- *
- *         @OA\JsonContent(
- *             @OA\Property(property="full_name", type="string", example="Сидоров Иван Иванович"),
- *             @OA\Property(property="phone_number", type="integer", example="89007778822"),
- *             @OA\Property(property="email", type="string", example="sidorov@gmail.com"),
- *             @OA\Property(property="company", type="string", example="Amazon"),
- *             @OA\Property(property="birth_of_day", type="date", example="1998.05.10"),
- *             @OA\Property(property="src_image", type="string", example="imagur.com/image6418641"),
- *         )
- *     )
- * ),
- *
  * @OA\Delete(
  *      path="/api/v1/notebooks/{notebook}",
  *      summary="Удаление записи",
@@ -189,18 +119,92 @@ class NotebookController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+     *      path="/api/v1/notebooks/{notebook}",
+     *      summary="Просмотр одной записи",
+     *      tags={"Notebook"},
+     *
+     *      @OA\Parameter(
+     *          description="ID записи",
+     *          in="path",
+     *          name="notebook",
+     *          required=true,
+     *          example=1,
+     *      ),
+     *
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="full_name", type="string", example="Иванов Иван Иванович"),
+     *              @OA\Property(property="phone_number", type="integer", example="89009998877"),
+     *              @OA\Property(property="email", type="string", example="ivanov@gmail.com"),
+     *              @OA\Property(property="company", type="string", example="google"),
+     *              @OA\Property(property="birth_of_day рождения", type="date", example="2000.01.01"),
+     *              @OA\Property(property="src_image", type="string", example="imagur.com/image145141"),
+     *          )
+     *      )
+     *  )
+     */
+
     public function show(Notebook $notebook): JsonResponse
     {
-            $user = Notebook::findOrFail($notebook->id);
-            return response()->json($user);
+        $user = Notebook::findOrFail($notebook->id);
+        return response()->json($user);
     }
+
+    /**
+     * @OA\Patch(
+     *      path="api/v1/notebooks/{notebook}",
+     *      summary="Update одной записи",
+     *      tags={"Notebook"},
+     *
+     *      @OA\Parameter(
+     *          description="ID записи",
+     *          in="path",
+     *          name="notebook",
+     *          required=true,
+     *          example=1,
+     *      ),
+     *
+     *      @OA\RequestBody(
+     *          @OA\JsonContent(
+     *              allOf={
+     *                  @OA\Schema(
+     *                      @OA\Property(property="full_name", type="string", example="Сидоров Иван Иванович"),
+     *                      @OA\Property(property="phone_number", type="integer", example="89007778822"),
+     *                      @OA\Property(property="email", type="string", example="sidorov@gmail.com"),
+     *                      @OA\Property(property="company", type="string", example="Amazon"),
+     *                      @OA\Property(property="birth_of_day", type="date", example="1998.05.10"),
+     *                      @OA\Property(property="src_image", type="string", example="imagur.com/image6418641"),
+     *                  )
+     *              }
+     *          )
+     *      ),
+     *
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *
+     *          @OA\JsonContent(
+     *              @OA\Property(property="full_name", type="string", example="Сидоров Иван Иванович"),
+     *              @OA\Property(property="phone_number", type="integer", example="89007778822"),
+     *              @OA\Property(property="email", type="string", example="sidorov@gmail.com"),
+     *              @OA\Property(property="company", type="string", example="Amazon"),
+     *              @OA\Property(property="birth_of_day", type="date", example="1998.05.10"),
+     *              @OA\Property(property="src_image", type="string", example="imagur.com/image6418641"),
+     *          )
+     *      )
+     * ),
+     */
 
     public function update(UpdateRequest $request, Notebook $notebook): JsonResponse
     {
-            $data = $request->validated();
-            $notebook->update($data);
+        $data = $request->validated();
+        $notebook->update($data);
 
-            return response()->json($notebook, 200);
+        return response()->json($notebook, 200);
     }
 
     public function destroy(Notebook $notebook): JsonResponse

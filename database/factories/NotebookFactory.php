@@ -18,7 +18,7 @@ class NotebookFactory extends Factory
     {
         return [
             'full_name' => $this->faker->name,
-            'phone_number' => '89009998877',
+            'phone_number' => $this->faker->phoneNumber,
             'email' => $this->faker->email,
             'company' => $this->faker->word,
             'date_of_birth' => $this->faker->date('Y-m-d'),
